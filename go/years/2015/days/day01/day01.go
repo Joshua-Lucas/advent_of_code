@@ -1,4 +1,4 @@
-package days
+package dayOne
 
 // Runs the logic to solve day one
 func RunDayOnePartOne(instructions string) int {
@@ -46,6 +46,6 @@ func RunDayOnePartTwo(instructions string) int {
 		}
 	}
 
-  return positionEnteredBasement
+	return positionEnteredBasement
 
 }
