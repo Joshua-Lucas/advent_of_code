@@ -12,19 +12,15 @@ type Present struct {
 func FindSmallestSide(a int, b int, c int) int {
 	sides := [3]int{a, b, c}
 
-	// Code have used a simplier solution but wanted to write an alg as I was taking
-	// and alg course at the time.
-	for i := 0; i < len(sides); i++ {
-		for j := 0; j < len(sides)-1-i; j++ {
-			if sides[j] > sides[j+1] {
-				temp := sides[j]
-				sides[j] = sides[j+1]
-				sides[j+1] = temp
-			}
-		}
-	}
+  smallestSide := sides[0]
 
-	return sides[0]
+  for _, side := range sides {
+    if(side < smallestSide){
+      smallestSide = side
+    }
+  }
+
+	return smallestSide 
 }
 
 // Create a factory function to create package struct
