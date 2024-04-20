@@ -10,8 +10,12 @@ import (
 // structs so the array of presents can be itterated through
 func PrepInstructions(rawInstructions string) []Present {
 	var presentInstructions []Present
-	// Take instructions and split on new line
-	rawStringPresents := strings.Split(rawInstructions, "\n")
+
+	// Take instructions and split on new line character. The reson we use FieldFunc
+	// vs split is becuase Split would leave and empty string at the end of the slice
+	rawStringPresents := strings.FieldsFunc(rawInstructions, func(r rune) bool {
+		return r == '\n'
+	})
 
 	// Then take new slice and split on "x"
 	for _, presentDimensions := range rawStringPresents {
