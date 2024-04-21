@@ -79,3 +79,29 @@ func TestPresentFactory(t *testing.T) {
 		}
 	}
 }
+
+type testCaseRibbonNeeded struct {
+	input    [3]int
+	expected int
+}
+
+var testCaseRibbonsNeeded = []testCaseRibbonNeeded{
+	{input: [3]int{2, 3, 4}, expected: 34},
+	{input: [3]int{1, 1, 10}, expected: 14},
+	{input: [3]int{10, 1, 1}, expected: 14},
+	{input: [3]int{4, 3, 2}, expected: 34},
+	{input: [3]int{8, 9, 7}, expected: 534},
+}
+
+func TestCalculateRibbonNeeded(t *testing.T) {
+	for _, tc := range testCaseRibbonsNeeded {
+		present := data.NewPresent(tc.input[0], tc.input[1], tc.input[2])
+
+		result := present.CalculateTheRibbonNeeded()
+
+		if result != tc.expected {
+			t.Errorf("The CalculateTheRibbonNeeded method on %v returns a value of %v which does not match the expected value of %v", present, result, tc.expected)
+		}
+	}
+
+}

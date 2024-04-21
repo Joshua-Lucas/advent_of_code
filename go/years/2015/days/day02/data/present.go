@@ -12,15 +12,44 @@ type Present struct {
 func FindSmallestSide(a int, b int, c int) int {
 	sides := [3]int{a, b, c}
 
-  smallestSide := sides[0]
+	smallestSide := sides[0]
 
-  for _, side := range sides {
-    if(side < smallestSide){
-      smallestSide = side
-    }
-  }
+	for _, side := range sides {
+		if side < smallestSide {
+			smallestSide = side
+		}
+	}
 
-	return smallestSide 
+	return smallestSide
+}
+
+// Calculates the ribbon need for the decorative accents of the present.
+func (p Present) CalculateTheRibbonNeeded() int {
+	// Find the smallest two sides. As the amount of ribbon to wrap is the the
+	// smallest perimeter of any one face
+	smallestSide := p.Length
+	secondSmallestSide := p.Width
+
+	if p.Width < smallestSide {
+		secondSmallestSide = smallestSide
+		smallestSide = p.Width
+	}
+
+	if p.Height < smallestSide {
+		secondSmallestSide = smallestSide
+		smallestSide = p.Height
+	} else if p.Height < secondSmallestSide {
+		secondSmallestSide = p.Height
+	}
+
+	ribbonForWrapping := smallestSide + smallestSide + secondSmallestSide + secondSmallestSide
+
+	// The amount of ribbon needed for the bow is equal to the volume of the pacakge.
+	ribbonForTheBow := p.Length * p.Width * p.Height
+
+	totalRibbonNeeded := ribbonForWrapping + ribbonForTheBow
+
+	return totalRibbonNeeded
 }
 
 // Create a factory function to create package struct
