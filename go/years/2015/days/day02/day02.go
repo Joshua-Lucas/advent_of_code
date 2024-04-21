@@ -7,7 +7,7 @@ import (
 	"joshualucas.dev/aoc/years/2015/days/day02/data"
 )
 
-func RunPartOne(instructions string) int {
+func RunPartOne(instructions string) (int, int) {
 	totalWrappingPaper := 0
 
 	// Prep instructions to iterate over to calculate total wrapping paper.
@@ -20,5 +20,15 @@ func RunPartOne(instructions string) int {
 		totalWrappingPaper = totalWrappingPaper + wrappingNeededForPresent
 	}
 
-	return totalWrappingPaper
+	// Part Two
+	totalRibbonNeeded := 0
+
+	// iterate over the present list and calculate total ribbon needed
+	for _, present := range parsedInstructions {
+		ribbonForPresent := present.CalculateTheRibbonNeeded()
+
+		totalRibbonNeeded = totalRibbonNeeded + ribbonForPresent
+	}
+
+	return totalWrappingPaper, totalRibbonNeeded
 }
