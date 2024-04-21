@@ -18,7 +18,7 @@ var testCasesPartOne = []testCaseDay{
 
 func TestDayTwoPartOne(t *testing.T) {
 	for _, tc := range testCasesPartOne {
-		result, _ := dayTwo.RunPartOne(tc.input)
+		result, _ := dayTwo.SolvePuzzle(tc.input)
 		if result != tc.expected {
 			t.Errorf("RunDayTwo(%v) returns %v.Which does not result in the expect int of %v", tc.input, result, tc.expected)
 		}
@@ -32,7 +32,7 @@ var testCasesPartTwo = []testCaseDay{
 
 func TestDayTwoPartTwo(t *testing.T) {
 	for _, tc := range testCasesPartTwo {
-		_, result := dayTwo.RunPartOne(tc.input)
+		_, result := dayTwo.SolvePuzzle(tc.input)
 		if result != tc.expected {
 			t.Errorf("RunDayTwo(%v) returns %v.Which does not result in the expect int of %v", tc.input, result, tc.expected)
 		}

@@ -7,7 +7,7 @@ import (
 	"joshualucas.dev/aoc/years/2015/days/day02/data"
 )
 
-func RunPartOne(instructions string) (int, int) {
+func SolvePuzzle(instructions string) (int, int) {
 	totalWrappingPaper := 0
 
 	// Prep instructions to iterate over to calculate total wrapping paper.

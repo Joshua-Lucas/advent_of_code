@@ -54,7 +54,7 @@ func RunYear2015(day int) {
 			return
 		}
 
-		partOne, partTwo := dayTwo.RunPartOne(instructions)
+		partOne, partTwo := dayTwo.SolvePuzzle(instructions)
 
 		fmt.Printf("The answer to part one of the day two puzzle is: %v \n", partOne)
 
