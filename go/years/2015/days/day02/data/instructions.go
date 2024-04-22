@@ -7,12 +7,12 @@ import (
 )
 
 // Takes in the instruction string and splits all the instructions into present
-// structs so the array of presents can be itterated through
+// structs so the array of presents can be iterates through
 func PrepInstructions(rawInstructions string) []Present {
 	var presentInstructions []Present
 
-	// Take instructions and split on new line character. The reson we use FieldFunc
-	// vs split is becuase Split would leave and empty string at the end of the slice
+	// Take instructions and split on new line character. The reason we use FieldFunc
+	// vs split is because Split would leave and empty string at the end of the slice
 	rawStringPresents := strings.FieldsFunc(rawInstructions, func(r rune) bool {
 		return r == '\n'
 	})
@@ -41,7 +41,7 @@ func PrepInstructions(rawInstructions string) []Present {
 			fmt.Println("Error with height string to int conversion", err)
 		}
 
-		// Create a new Present struct for the present demensions.
+		// Create a new Present struct for the present dimensions.
 		present := NewPresent(length, width, height)
 
 		// Add the Present to an array of presents.

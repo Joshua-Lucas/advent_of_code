@@ -7,13 +7,13 @@ import (
 	years "joshualucas.dev/aoc/years/2015"
 )
 
-// Declare varaibles that will hold the flags passed when the file is run.
+// Declare variables that will hold the flags passed when the file is run.
 var yearFlag *int
 var dayFlag *int
 
 func init() {
 	// On init grab the flags passed when running the program.
-	yearFlag = flag.Int("year", 2105, "The year that the puzzle is fron")
+	yearFlag = flag.Int("year", 2105, "The year that the puzzle is from")
 
 	dayFlag = flag.Int("day", 1, "The day of the puzzle")
 

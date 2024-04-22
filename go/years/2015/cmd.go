@@ -13,7 +13,7 @@ import (
 /*
 	RunYear2015 is a function that runs the solutions for the puzzles of the
 
-specified day in the year 2015. It takes an integer representing the day of
+Specified day in the year 2015. It takes an integer representing the day of
 the puzzle to be run.
 */
 func RunYear2015(day int) {
@@ -43,7 +43,7 @@ func RunYear2015(day int) {
 
 		partTwoAnswer := dayOne.RunDayOnePartTwo(instructions)
 
-		fmt.Printf("The anwser to part two of the day one puzzle is: %v \n", partTwoAnswer)
+		fmt.Printf("The answer to part two of the day one puzzle is: %v \n", partTwoAnswer)
 	case 2:
 
 		dayPath := "/day02/input.txt"
@@ -59,7 +59,7 @@ func RunYear2015(day int) {
 
 		fmt.Printf("The answer to part one of the day two puzzle is: %v \n", partOne)
 
-		fmt.Printf("The anwser to part two of the day two puzzle is: %v \n", partTwo)
+		fmt.Printf("The answer to part two of the day two puzzle is: %v \n", partTwo)
 
 	case 3:
 
@@ -76,7 +76,7 @@ func RunYear2015(day int) {
 
 		fmt.Printf("The answer to part one of the day three puzzle is: %v \n", partOne)
 
-		fmt.Printf("The anwser to part two of the day three puzzle is: %v \n", partTwo)
+		fmt.Printf("The answer to part two of the day three puzzle is: %v \n", partTwo)
 
 	default:
 		fmt.Println("There is not an answer to that day of the puzzle")
