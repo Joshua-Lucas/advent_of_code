@@ -53,7 +53,74 @@ func SolvePuzzle(directions string) (int, int) {
 
 	numberOfHousesDeliveredTo := len(atleastOnePresentDeliveried)
 
-	return numberOfHousesDeliveredTo, 0
+	//-- PART TWO --
+
+	personOneDeliveryLog := []data.House{{Longitude: 0, Latitude: 0}}
+	personTwoDeliveryLog := []data.House{{Longitude: 0, Latitude: 0}}
+
+	for index, char := range directions {
+		if char == 10 {
+			continue
+		}
+
+		if index%2 == 0 {
+			lastHouse := personOneDeliveryLog[len(personOneDeliveryLog)-1]
+
+			// Then, get the location of the next house to deliver at.
+			houseDeliveriedAt, err := data.LogDelivery(lastHouse, string(char))
+
+			// If there is an error with the direction we just want to skip it, and log
+			// that we go an error.
+			if err != nil {
+				fmt.Printf("Issue with the directions. Got error: %v", err)
+				continue
+			}
+
+			// Log the delivery of a present at the house.
+			personOneDeliveryLog = append(personOneDeliveryLog, houseDeliveriedAt)
+
+		} else {
+
+			lastHouse := personTwoDeliveryLog[len(personTwoDeliveryLog)-1]
+
+			// Then, get the location of the next house to deliver at.
+			houseDeliveriedAt, err := data.LogDelivery(lastHouse, string(char))
+
+			// If there is an error with the direction we just want to skip it, and log
+			// that we go an error.
+			if err != nil {
+				fmt.Printf("Issue with the directions. Got error: %v", err)
+				continue
+			}
+
+			// Log the delivery of a present at the house.
+			personTwoDeliveryLog = append(personTwoDeliveryLog, houseDeliveriedAt)
+
+		}
+
+	}
+
+	//
+
+	var atleastOnePresentDeliveriedYearTwo []data.House
+
+	// check that the house was not already tracked in person ones log.
+	for _, house := range personOneDeliveryLog {
+		if !SliceContains(atleastOnePresentDeliveriedYearTwo, house) {
+			atleastOnePresentDeliveriedYearTwo = append(atleastOnePresentDeliveriedYearTwo, house)
+		}
+	}
+
+	// check that the house was not already tracked in person two's log.
+	for _, house := range personTwoDeliveryLog {
+		if !SliceContains(atleastOnePresentDeliveriedYearTwo, house) {
+			atleastOnePresentDeliveriedYearTwo = append(atleastOnePresentDeliveriedYearTwo, house)
+		}
+	}
+
+	numberOfHousesDeliveredToYearTwo := len(atleastOnePresentDeliveriedYearTwo)
+
+	return numberOfHousesDeliveredTo, numberOfHousesDeliveredToYearTwo
 }
 
 // SliceContains returns Boolean telling us if the value was in the slice.

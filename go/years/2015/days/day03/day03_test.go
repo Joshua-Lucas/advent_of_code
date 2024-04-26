@@ -7,7 +7,7 @@ import (
 	"joshualucas.dev/aoc/years/2015/days/day03/data"
 )
 
-func TestSolvePuzzle(t *testing.T) {
+func TestSolvePuzzlePartOne(t *testing.T) {
 	type testCaseDay struct {
 		input    string
 		expected int
@@ -49,12 +49,53 @@ func TestSolvePuzzle(t *testing.T) {
 	}
 }
 
-type inputSliceContains struct {
-	slice []data.House
-	value data.House
+func TestSolvePuzzlePartTwo(t *testing.T) {
+	type testCaseDay struct {
+		input    string
+		expected int
+	}
+
+	testCases := map[string]testCaseDay{
+		"did not move": {
+			input:    "",
+			expected: 1,
+		},
+		"move on x axis": {
+			input:    "^v",
+			expected: 3,
+		},
+		"move all directions": {
+
+			input:    "^>v<",
+			expected: 3,
+		},
+		"move on y axis": {
+			input:    "^v^v^v^v^v",
+			expected: 11,
+		},
+		"do not move on wrong char": {
+			input:    "\n",
+			expected: 1,
+		},
+	}
+
+	for name, tc := range testCases {
+
+		t.Run(name, func(t *testing.T) {
+			_, result := dayThree.SolvePuzzle(tc.input)
+
+			if result != tc.expected {
+				t.Errorf("Result: %v, but expected %v from input: %v", result, tc.expected, tc.input)
+			}
+		})
+	}
 }
 
 func TestSliceContains(t *testing.T) {
+	type inputSliceContains struct {
+		slice []data.House
+		value data.House
+	}
 
 	testCases := map[string]struct {
 		input    inputSliceContains
