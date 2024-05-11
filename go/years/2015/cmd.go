@@ -8,6 +8,7 @@ import (
 	dayOne "joshualucas.dev/aoc/years/2015/days/day01"
 	dayTwo "joshualucas.dev/aoc/years/2015/days/day02"
 	dayThree "joshualucas.dev/aoc/years/2015/days/day03"
+	dayFour "joshualucas.dev/aoc/years/2015/days/day04"
 )
 
 /*
@@ -73,6 +74,23 @@ func RunYear2015(day int) {
 		}
 
 		partOne, partTwo := dayThree.SolvePuzzle(instructions)
+
+		fmt.Printf("The answer to part one of the day three puzzle is: %v \n", partOne)
+
+		fmt.Printf("The answer to part two of the day three puzzle is: %v \n", partTwo)
+
+	case 4:
+
+		dayPath := "/day04/input.txt"
+
+		instructions, err := inputUtils.ReadInputFile(inputsPath + dayPath)
+
+		if err != nil {
+			fmt.Printf("Error with reading input file. %v", err)
+			return
+		}
+
+		partOne, partTwo := dayFour.SolvePuzzle(instructions)
 
 		fmt.Printf("The answer to part one of the day three puzzle is: %v \n", partOne)
 
