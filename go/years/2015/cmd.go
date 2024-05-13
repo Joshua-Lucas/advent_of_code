@@ -9,6 +9,7 @@ import (
 	dayTwo "joshualucas.dev/aoc/years/2015/days/day02"
 	dayThree "joshualucas.dev/aoc/years/2015/days/day03"
 	dayFour "joshualucas.dev/aoc/years/2015/days/day04"
+	dayFive "joshualucas.dev/aoc/years/2015/days/day05"
 )
 
 /*
@@ -92,9 +93,26 @@ func RunYear2015(day int) {
 
 		partOne, partTwo := dayFour.SolvePuzzle(instructions)
 
-		fmt.Printf("The answer to part one of the day three puzzle is: %v \n", partOne)
+		fmt.Printf("The answer to part one of the puzzle is: %v \n", partOne)
 
-		fmt.Printf("The answer to part two of the day three puzzle is: %v \n", partTwo)
+		fmt.Printf("The answer to part two of the puzzle is: %v \n", partTwo)
+
+	case 5:
+
+		dayPath := "/day05/input.txt"
+
+		instructions, err := inputUtils.ReadInputFile(inputsPath + dayPath)
+
+		if err != nil {
+			fmt.Printf("Error with reading input file. %v", err)
+			return
+		}
+
+		partOne, partTwo := dayFive.SolvePuzzle(instructions)
+
+		fmt.Printf("The answer to part one of the puzzle is: %v \n", partOne)
+
+		fmt.Printf("The answer to part two of the puzzle is: %v \n", partTwo)
 
 	default:
 		fmt.Println("There is not an answer to that day of the puzzle")
