@@ -43,6 +43,43 @@ func TestContainsThreeVowels(t *testing.T) {
 	}
 }
 
+func TestContainsLetterAppearingTwice(t *testing.T) {
+	type testCaseDay struct {
+		input    string
+		expected bool
+	}
+
+	testCases := map[string]testCaseDay{
+		"No letters appear twice in a row": {
+			input:    "abcdefghi",
+			expected: false,
+		},
+		"Letters appear twice": {
+			input:    "abcdde",
+			expected: true,
+		},
+		"Letter appears twice but not in a row": {
+			input:    "afdgretit",
+			expected: false,
+		},
+		"Single letter does not break check": {
+			input:    "a",
+			expected: false,
+		},
+	}
+
+	for name, tc := range testCases {
+
+		t.Run(name, func(t *testing.T) {
+			result := listParser.ALetterAppearsTwiceInARow(tc.input)
+
+			if result != tc.expected {
+				t.Errorf("Result: %v, but expected %v from input: %v", result, tc.expected, tc.input)
+			}
+		})
+	}
+}
+
 func TestContainsForbidden(t *testing.T) {
 	type testCaseDay struct {
 		input    string
@@ -79,7 +116,7 @@ func TestContainsForbidden(t *testing.T) {
 	for name, tc := range testCases {
 
 		t.Run(name, func(t *testing.T) {
-			result := listParser.ContainsThreeVowels(tc.input)
+			result := listParser.ContainForbiddenPairs(tc.input)
 
 			if result != tc.expected {
 				t.Errorf("Result: %v, but expected %v from input: %v", result, tc.expected, tc.input)

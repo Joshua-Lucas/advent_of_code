@@ -24,7 +24,20 @@ func ContainsThreeVowels(str string) bool {
 // Returns true when at least one letter appears twice in a row(i.e. aa,bb)
 func ALetterAppearsTwiceInARow(str string) bool {
 
-	return false
+	letterAppearsTwice := false
+
+	for idx, char := range str {
+		if idx > 0 {
+			prevChar := str[idx-1]
+
+			if char == rune(prevChar) {
+				letterAppearsTwice = true
+				break
+			}
+		}
+	}
+
+	return letterAppearsTwice
 }
 
 // Returns true when string contains ab, cd, pq, xy
