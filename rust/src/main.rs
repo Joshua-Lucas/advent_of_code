@@ -1,5 +1,4 @@
 use clap::Parser;
-use years::year_2021::run_year;
 
 use crate::utils::cli::Opts;
 
@@ -16,7 +15,8 @@ fn main() {
 
 fn get_solution(year: usize, day: usize) {
     match year {
-        2021 => run_year(day),
+        2016 => years::year_2016::run_year(day),
+        2021 => years::year_2021::run_year(day),
         _ => println!("There are no solutins for that year"),
     }
 }
