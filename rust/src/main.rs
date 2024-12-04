@@ -17,6 +17,7 @@ fn get_solution(year: usize, day: usize) {
     match year {
         2016 => years::year_2016::run_year(day),
         2021 => years::year_2021::run_year(day),
+        2024 => years::year_2024::run_year(day),
         _ => println!("There are no solutins for that year"),
     }
 }
